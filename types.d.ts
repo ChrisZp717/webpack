@@ -657,8 +657,6 @@ declare abstract class ChunkGroup {
 
 	/**
 	 * returns the name of current ChunkGroup
-	 *
-	 *
 	 * sets a new name for current ChunkGroup
 	 */
 	name: string;
@@ -764,10 +762,6 @@ declare interface ChunkHashContext {
 	 */
 	chunkGraph: ChunkGraph;
 }
-
-/**
- * Compare two Modules based on their ids for sorting
- */
 declare interface ChunkMaps {
 	hash: Record<string | number, string>;
 	contentHash: Record<string | number, Record<string, string>>;
@@ -1569,6 +1563,10 @@ declare class Dependency {
 	 * Returns errors
 	 */
 	getErrors(moduleGraph: ModuleGraph): WebpackError[];
+
+	/**
+	 * Update the hash
+	 */
 	updateHash(hash: Hash, chunkGraph: ChunkGraph): void;
 
 	/**
@@ -2417,10 +2415,6 @@ declare abstract class FileSystemInfo {
 	getDeprecatedFileTimestamps(): Map<any, any>;
 	getDeprecatedContextTimestamps(): Map<any, any>;
 }
-
-/**
- * istanbul ignore next
- */
 declare interface FileSystemInfoEntry {
 	safeTime: number;
 	timestamp?: number;
@@ -3278,10 +3272,6 @@ type LibraryType =
 declare class LimitChunkCountPlugin {
 	constructor(options?: LimitChunkCountPluginOptions);
 	options: LimitChunkCountPluginOptions;
-
-	/**
-	 * Apply the plugin
-	 */
 	apply(compiler: Compiler): void;
 }
 
@@ -5332,10 +5322,6 @@ declare abstract class RequestShortener {
 	contextify: (arg0: string) => string;
 	shorten(request: string): string;
 }
-
-/**
- * istanbul ignore next
- */
 declare interface ResolveBuildDependenciesResult {
 	/**
 	 * list of files
@@ -6122,10 +6108,6 @@ declare class SideEffectsFlagPlugin {
 		cache?: any
 	): any;
 }
-
-/**
- * istanbul ignore next
- */
 declare interface Snapshot {
 	startTime?: number;
 	fileTimestamps?: Map<string, FileSystemInfoEntry>;
@@ -6153,6 +6135,10 @@ declare abstract class SortableSet<T> extends Set<T> {
 	 */
 	getFromUnorderedCache<R>(fn: (arg0: SortableSet<T>) => R): R;
 	toJSON(): T[];
+
+	/**
+	 * Iterates over values in the set.
+	 */
 	[Symbol.iterator](): IterableIterator<T>;
 	readonly [Symbol.toStringTag]: string;
 }
